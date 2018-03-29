@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
 	// Set Python Home, because even if we execute this program on a terminal
 	// with virtualenv activated, it does not use the virtualenv path, thus
 	// not founding the installed modules
-	//wchar_t *pythonhome = Py_DecodeLocale("C:/Users/win10/Anaconda3/envs/SiamFC-py3/", NULL);
 	wchar_t *pythonhome = Py_DecodeLocale(argv[2], NULL);
 	Py_SetPythonHome(pythonhome);
 	
@@ -49,10 +48,8 @@ int main(int argc, char *argv[])
 	PyRun_SimpleString("import sys\n"
 		"sys.argv = ['']");
 
-	//FILE *file = _Py_fopen("run_tracker_evaluation.py", "r+");
 	FILE *file = _Py_fopen(argv[1], "r+");
 	if (file != NULL) {
-		//PyRun_SimpleFile(file, "run_tracker_evaluation.py");
 		PyRun_SimpleFile(file, argv[1]);
 	}
 
